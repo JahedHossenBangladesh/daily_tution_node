@@ -1,0 +1,27 @@
+{
+  "name": "daily_tution_node",
+  "version": "1.0.0",
+  "description": "This is the youtube channel daily_tution node tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JahedHossenBangladesh/daily_tution_node.git"
+  },
+  "author": "Jahed Hossen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JahedHossenBangladesh/daily_tution_node/issues"
+  },
+  "homepage": "https://github.com/JahedHossenBangladesh/daily_tution_node#readme",
+  "dependencies": {
+    "loadash": "^1.0.0",
+    "webpack": "^5.52.1"
+  },
+  "devDependencies": {
+    "uuid": "^8.3.2"
+  }
+}
