@@ -24,14 +24,32 @@
 // }
 // foo2();    //console.log('foo2')
 
-function getMessage(msg,callback){
-    setTimeout( () =>{
-        console.log(msg);
-        callback();
-    },1000);
-}
-function displayMessage(){
-    console.log('displayMessage');
-}
+// function getMessage(msg,callback){
+//     setTimeout( () =>{
+//         console.log(msg);
+//         callback();
+//     },1000);
+// }
+// function displayMessage(){
+//     console.log('displayMessage');
+// }
 
-getMessage('hello',displayMessage);
+// getMessage('hello',displayMessage);
+
+
+let promise = new Promise(function(resolve,reject){
+
+    setTimeout(()=> resolve("Run Before"),1000)
+})
+
+promise.then(
+    result => {
+        console.log(result)
+        afterMsg()
+    },
+    error => console.log(error)
+)
+
+function afterMsg(){
+    console.log('Print After');
+}
