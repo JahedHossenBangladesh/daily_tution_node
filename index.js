@@ -60,13 +60,17 @@ function Clown(){
         },2000)
     })
 }
-async  function msg(){
+async  function msg(callback ){
     const msg = await Clown();
     console.log(msg);
+    callback();
 }
 
-msg()
+msg(getResult)
 
+function getResult(){
+    console.log('After the Promise')
+}
 
 
 
