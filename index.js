@@ -76,18 +76,33 @@
 
 // Http server
 
-const http = require('http');
-const hostname = '127.0.0.1';
-const port = 3000;
+// const http = require('http');
+// const hostname = '127.0.0.1';
+// const port = 3000;
 
-http.createServer((req,res) =>{
+// http.createServer((req,res) =>{
 
-    res.writeHead(200,{'Content-Type':'text/plain'});
-    res.write('welcome to http')
-    res.end();
-}).listen(port,hostname,() =>{
-    console.log(`Server running at http://${hostname}:${port}/`);
+//     res.writeHead(200,{'Content-Type':'text/plain'});
+//     res.write('welcome to http')
+//     res.end();
+// }).listen(port,hostname,() =>{
+//     console.log(`Server running at http://${hostname}:${port}/`);
+// })
+
+// Http request
+const http = require('http')
+
+http.get('http://api.open-notify.org/astros.json',res =>{
+    let data = '';
+    res.on('data',chunk =>{
+        data+= chunk;
+    })
+    res.on('end', () =>{
+        const json = JSON.parse(data);
+        console.log(json);
+    })
 })
+
 
 
 
