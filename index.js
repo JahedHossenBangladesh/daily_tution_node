@@ -90,20 +90,59 @@
 // })
 
 // Http request
-const http = require('http')
 
-http.get('http://api.open-notify.org/astros.json',res =>{
-    let data = '';
-    res.on('data',chunk =>{
-        data+= chunk;
-    })
-    res.on('end', () =>{
-        const json = JSON.parse(data);
-        console.log(json);
-    })
+
+// const http = require('http')
+
+
+
+
+// http.get('http://api.open-notify.org/astros.json',res =>{
+//     let data = '';
+//     res.on('data',chunk =>{
+//         data+= chunk;
+//     })
+//     res.on('end', () =>{
+//         const json = JSON.parse(data);
+//         console.log(json);
+//     })
+// })
+
+// Post request in node 
+//  Native post request 
+
+const http = require('https');
+
+const data =JSON.stringify({
+    name:'Jahed',
+    age:25,
+    job:'Web developer'
+})
+const options = {
+    hostname:'reqres.in',
+    path:'/api/users',
+    method: 'POST',
+   headers: {
+    'Content-Type':'application/json'
+ }}
+
+const req = http.request(options,(res) =>{
+
+let data = '';
+console.log('Status Code ',res.statusCode)
+;
+res.on('data',(chunk) =>{
+    data += chunk;
 })
 
+res.on('end',()=>{
+    console.log('Body:',JSON.parse(data))
 
+})
+})
+
+req.write(data);
+req.end();
 
 
 
