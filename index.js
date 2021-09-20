@@ -147,6 +147,20 @@
 // Start with axious
 
 
+const axios = require('axios');
 
+const data = JSON.stringify({
+    name:'Jahed',
+    age:25,
+})
 
+axios.post ('https://reqres.in/api/users',data).then(res =>{
+    console.log(`
+    Status Code ${res.status}
+    `)
+    console.log(res.data)
+})
+.catch(err =>{
+    console.log(err.message);
+})
 
