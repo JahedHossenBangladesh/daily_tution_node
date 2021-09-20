@@ -111,38 +111,41 @@
 // Post request in node 
 //  Native post request 
 
-const http = require('https');
+// const http = require('https');
 
-const data =JSON.stringify({
-    name:'Jahed',
-    age:25,
-    job:'Web developer'
-})
-const options = {
-    hostname:'reqres.in',
-    path:'/api/users',
-    method: 'POST',
-   headers: {
-    'Content-Type':'application/json'
- }}
+// const data =JSON.stringify({
+//     name:'Jahed',
+//     age:25,
+//     job:'Web developer'
+// })
+// const options = {
+//     hostname:'reqres.in',
+//     path:'/api/users',
+//     method: 'POST',
+//    headers: {
+//     'Content-Type':'application/json'
+//  }}
 
-const req = http.request(options,(res) =>{
+// const req = http.request(options,(res) =>{
 
-let data = '';
-console.log('Status Code ',res.statusCode)
-;
-res.on('data',(chunk) =>{
-    data += chunk;
-})
+// let data = '';
+// console.log('Status Code ',res.statusCode)
+// ;
+// res.on('data',(chunk) =>{
+//     data += chunk;
+// })
 
-res.on('end',()=>{
-    console.log('Body:',JSON.parse(data))
+// res.on('end',()=>{
+//     console.log('Body:',JSON.parse(data))
 
-})
-})
+// })
+// })
 
-req.write(data);
-req.end();
+// req.write(data);
+// req.end();
+
+// Start with axious
+
 
 
 
