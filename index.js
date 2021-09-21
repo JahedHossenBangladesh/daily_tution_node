@@ -166,9 +166,53 @@
 
 // File system
 
-const fs = require('fs');
+// const fs = require('fs');
 
-fs.readFile('text.txt','utf-8',(err,data) =>{
-    if(err) throw err;
-    console.log(data);
-})
+// fs.readFile('text.txt','utf-8',(err,data) =>{
+//     if(err) throw err;
+//     console.log(data);
+// })
+
+// Update the file
+const fs =  require('fs');
+
+const content = {
+    type: 'Node Application'
+}
+fs.writeFileSync('test.json',JSON.stringify(content));
+
+// aSync code 
+
+// const fs = require('fs');
+const contentForAsync = "Node Moduel";
+
+fs.writeFile( 
+    'test.txt',
+    contentForAsync, 
+    {
+        // flag:'a+'
+        flag:'w+'
+        // flag:'r+'
+        // flag:'a'
+}, err =>{
+        if (err){
+            console.log(err);
+            return
+        }
+        console.log('File is created')
+    }
+)
+
+// file remove  or delete
+fs.unlink('test.json', err =>{
+    if(err){
+        console.log(err);
+        return
+
+    }
+    console.log('file is remove')
+}
+
+)
+
+
