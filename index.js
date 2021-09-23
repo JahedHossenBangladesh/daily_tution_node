@@ -174,45 +174,67 @@
 // })
 
 // Update the file
-const fs =  require('fs');
+// const fs =  require('fs');
 
-const content = {
-    type: 'Node Application'
+// const content = {
+//     type: 'Node Application'
+// }
+// fs.writeFileSync('test.json',JSON.stringify(content));
+
+// // aSync code 
+
+// // const fs = require('fs');
+// const contentForAsync = "Node Moduel";
+
+// fs.writeFile( 
+//     'test.txt',
+//     contentForAsync, 
+//     {
+//         // flag:'a+'
+//         flag:'w+'
+//         // flag:'r+'
+//         // flag:'a'
+// }, err =>{
+//         if (err){
+//             console.log(err);
+//             return
+//         }
+//         console.log('File is created')
+//     }
+// )
+
+// // file remove  or delete
+// fs.unlink('test.json', err =>{
+//     if(err){
+//         console.log(err);
+//         return
+
+//     }
+//     console.log('file is remove')
+// }
+
+// )
+
+
+
+// Routing
+
+const http = require('http')
+
+function index(request,response){
+    response.writeHead(200);
+    response.end('Node Routing')
 }
-fs.writeFileSync('test.json',JSON.stringify(content));
-
-// aSync code 
-
-// const fs = require('fs');
-const contentForAsync = "Node Moduel";
-
-fs.writeFile( 
-    'test.txt',
-    contentForAsync, 
-    {
-        // flag:'a+'
-        flag:'w+'
-        // flag:'r+'
-        // flag:'a'
-}, err =>{
-        if (err){
-            console.log(err);
-            return
+function aboutUs(req,res){
+    res.end("This is About page")
+}
+http.createServer(
+    (req,res) =>{
+        if(req.url == '/'){
+            return index(req,res);
         }
-        console.log('File is created')
+        if(req.url == '/about'){
+            return aboutUs(req,res);
+        }
     }
-)
-
-// file remove  or delete
-fs.unlink('test.json', err =>{
-    if(err){
-        console.log(err);
-        return
-
-    }
-    console.log('file is remove')
-}
-
-)
-
-
+).listen(8000); 
