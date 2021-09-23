@@ -219,22 +219,44 @@
 
 // Routing
 
-const http = require('http')
+// const http = require('http')
 
-function index(request,response){
-    response.writeHead(200);
-    response.end('Node Routing')
-}
-function aboutUs(req,res){
-    res.end("This is About page")
+// function index(request,response){
+//     response.writeHead(200);
+//     response.end('Node Routing')
+// }
+// function aboutUs(req,res){
+//     res.end("This is About page")
+// }
+// http.createServer(
+//     (req,res) =>{
+//         if(req.url == '/'){
+//             return index(req,res);
+//         }
+//         if(req.url == '/about'){
+//             return aboutUs(req,res);
+//         }
+//     }
+// ).listen(8000); 
+
+// Short cut to write the route;
+// write the http
+const http = require('http');
+
+const route = {
+    '/': function index (req,res){
+        res.writeHead(200);
+        res.end('Home page')
+    },
+    '/about': function aboutUs(req,res){
+        res.end('About page')
+    }
 }
 http.createServer(
-    (req,res) =>{
-        if(req.url == '/'){
-            return index(req,res);
-        }
-        if(req.url == '/about'){
-            return aboutUs(req,res);
+    function(req,res){
+        if(req.url in route){
+            return route[req.url](req,res);
         }
     }
-).listen(8000); 
+)
+.listen(8000);
